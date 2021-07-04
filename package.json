@@ -1,9 +1,10 @@
 {
-	"name": "hello-world",
-	"displayName": "hello-world",
-	"description": "",
+	"name": "json-go-ts",
+	"displayName": "json-go-ts",
+	"description": "json跳转到ts文件",
+	"keywords": ["json", "ts"],
 	"version": "0.0.1",
-	"publisher": "haha",
+	"publisher": "yonsunzhen",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
@@ -70,5 +71,13 @@
 		"mocha": "^8.4.0",
 		"typescript": "^4.3.2",
 		"vscode-test": "^1.5.2"
-	}
+	},
+	"bugs": {
+		"url": "https://github.com/YonSunZhen/vscode-plugin-json-go-ts/issues"
+	},
+	"repository": {
+		"type": "github",
+		"url": "https://github.com/YonSunZhen/vscode-plugin-json-go-ts"
+	},
+	"homepage": "https://github.com/YonSunZhen/vscode-plugin-json-go-ts/blob/master/README.md"
 }
