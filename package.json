@@ -2,7 +2,10 @@
 	"name": "json-go-ts",
 	"displayName": "json-go-ts",
 	"description": "json跳转到ts文件",
-	"keywords": ["json", "ts"],
+	"keywords": [
+		"json",
+		"ts"
+	],
 	"version": "0.0.1",
 	"publisher": "yonsunzhen",
 	"engines": {
@@ -12,8 +15,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:hello-world.helloWorld",
-		"onLanguage:json"
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -33,17 +35,17 @@
 			]
 		},
 		"configuration": {
-			"title": "hello-world",
+			"title": "Json Go Ts",
 			"properties": {
-				"helloWorld.key": {
+				"jsonGoTs.fileName": {
 					"type": "string",
 					"default": "index",
 					"description": "关键字"
 				},
-				"helloWorld.path": {
+				"jsonGoTs.filePath": {
 					"type": "string",
 					"default": "./src/index",
-					"description": "路径"
+					"description": "以json文件为参照 index文件的相对路径"
 				}
 			}
 		}
