@@ -4,6 +4,11 @@ import * as parser from '@babel/parser';
 import traverse from '@babel/traverse';
 import { SourceLocation } from '@babel/types';
 
+export interface FnInfo {
+  fnName?: string, 
+  loc?: SourceLocation
+}
+
 export function getFnFromTsFile(path: string) {
   // 1.fs模块根据路径读取到了module的内容
   const content = fs.readFileSync(path, 'utf-8');
@@ -13,7 +18,7 @@ export function getFnFromTsFile(path: string) {
     plugins: ['typescript'] 
   });
   // 3.使用@babel/traverse遍历了AST ，对每个ImportDeclaration节点做映射，把依赖关系拼装在 dependencies对象里
-  const fnNameList: {fnName?: string, loc?: SourceLocation}[] = [];
+  const fnNameList: FnInfo[] = [];
   traverse(ast, {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     ExportDeclaration(node: any) {

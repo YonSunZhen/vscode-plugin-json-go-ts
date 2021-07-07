@@ -10,7 +10,8 @@ export function provideDefinition(document, position, token) {
   const word = document.getText(document.getWordRangeAtPosition(position)); // 获取当前光标输入字符
   const _reg = new RegExp(`"${fileName}\..*"`);  
   if (_reg.test(word)) {
-    const _fnName = word.replace(/"index\.|"/g, '');
+    // const _fnName = word.replace(/"index\.|"/g, '');
+    const _fnName = word.replace(new RegExp(`"${fileName}\.|"`, 'g'), '');
     if(_fnData.map(_fnItem => _fnItem.fnName).includes(_fnName)) {
       const filePath = `${_filePath}.ts`;
       for(const _fnItem of _fnData) {

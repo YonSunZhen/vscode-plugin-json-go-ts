@@ -6,7 +6,7 @@
 		"json",
 		"ts"
 	],
-	"version": "0.0.1",
+	"version": "0.1.2",
 	"publisher": "yonsunzhen",
 	"engines": {
 		"vscode": "^1.57.0"
@@ -15,25 +15,10 @@
 		"Other"
 	],
 	"activationEvents": [
-		"*"
+		"onLanguage:json"
 	],
-	"main": "./out/extension.js",
+	"main": "./dist/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "hello-world.helloWorld",
-				"title": "Hello World"
-			}
-		],
-		"menus": {
-			"editor/context": [
-				{
-					"when": "editorFocus",
-					"command": "hello-world.helloWorld",
-					"group": "navigation"
-				}
-			]
-		},
 		"configuration": {
 			"title": "Json Go Ts",
 			"properties": {
@@ -51,12 +36,17 @@
 		}
 	},
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack",
+		"tsc": "tsc -watch -p ./",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"test-compile": "tsc -p ./",
+		"test-watch": "tsc -watch -p ./",
+		"pretest": "npm run test-compile && npm run lint",
 		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./dist/test/runTest.js",
+		"publish": "vsce publish"
 	},
 	"devDependencies": {
 		"@babel/parser": "^7.14.7",
@@ -72,7 +62,10 @@
 		"glob": "^7.1.7",
 		"mocha": "^8.4.0",
 		"typescript": "^4.3.2",
-		"vscode-test": "^1.5.2"
+		"vscode-test": "^1.5.2",
+		"ts-loader": "^9.2.2",
+		"webpack": "^5.38.1",
+		"webpack-cli": "^4.7.0"
 	},
 	"bugs": {
 		"url": "https://github.com/YonSunZhen/vscode-plugin-json-go-ts/issues"
