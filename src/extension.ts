@@ -14,7 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// });
 	// context.subscriptions.push(disposable);
 
-	// 自动补全; 
+	// 自动补全
 	context.subscriptions.push(vscode.languages.registerCompletionItemProvider({language: 'json', scheme: 'file'}, {
 		provideCompletionItems, resolveCompletionItem
 	}, '.'));
@@ -24,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
 		provideDefinition
 	}));
 
-	// 智能诊断
+	// 智能诊断 波浪线提示
 	const collection = vscode.languages.createDiagnosticCollection('testFnName');
 	if (vscode.window.activeTextEditor) {
 		collection.clear();
