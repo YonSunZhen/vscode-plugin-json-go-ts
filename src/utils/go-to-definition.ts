@@ -23,6 +23,7 @@ export function provideDefinition(document: vscode.TextDocument, position: vscod
             const _targetPosition = new vscode.Position(_fnItem.loc.start.line, _fnItem.loc.start.column);
             const _targetRange = new vscode.Range(_targetPosition, _targetPosition);
             const _fileNameLen = (fileName as string).length || 0;
+            // 当按住ctrl时，编辑器默认会将连在一块的字符都显示出来下划线 这时候如果想指定哪些字符需要显示下划线需要配置以下的originSelectionRange
             const _orgSelectionStartPosition = new vscode.Position(_wordRangePosition.start.line, _wordRangePosition.start.character + _fileNameLen + 2);
             const _orgSelectionEndPosition = new vscode.Position(_wordRangePosition.end.line, _wordRangePosition.end.character - 1);
             const _originSelectionRange = new vscode.Range(_orgSelectionStartPosition, _orgSelectionEndPosition);
